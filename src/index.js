@@ -1,5 +1,8 @@
 #! /usr/bin/env node
 
+// https://www.youtube.com/embed/53pcd8gF2yk?start=60&end=90
+// https://youtu.be/53pcd8gF2yk?t=1m
+
 // function Cat(eyesColor, woolLength, tailLength) {
 //     this.eyesColor = eyesColor;
 //     this.woolLength = woolLength;
@@ -16,11 +19,23 @@ class Cat {
     }
 
     // noinspection JSMethodCanBeStatic
-    caress() { console.log("mrrrrr...") }
+    caress() {
+        console.log("mrrrrr...")
+    }
 
     // noinspection JSMethodCanBeStatic
-    feed() { console.log("am-am!") }
+    feed() {
+        console.log("am-am!")
+    }
 }
+
+const cat = {
+    eyesColor: "green",
+    woolLength: 10,
+    tailLength: 150,
+    caress: function() { console.log("mrrrrr..."); },
+    feed: function() { console.log("am-am!"); },
+};
 
 // const cat = Object.create(Cat.prototype); //{__proto__: Cat.prototype}
 // Cat.call(cat, "green", 10, 150);
@@ -81,7 +96,7 @@ persianCat.combOut(); // Myau!
 //
 // Object.setPrototypeOf(SphinxCat.prototype, Cat.prototype);
 
-class SphinxCat extends Cat{
+class SphinxCat extends Cat {
     constructor(eyesColor, tailLength) {
         super(eyesColor, 0, tailLength);
     }
