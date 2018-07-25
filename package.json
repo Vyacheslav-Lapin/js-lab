@@ -6,8 +6,8 @@
   "scripts": {
     "build": "NODE_ENV=production babel ./src --out-dir ./dist --source-maps inline",
     "babel-node": "babel-node",
-    "run": "babel-node -- ./src/index.js",
-    "runComp": "npm run build & babel-node -- ./dist/index.js"
+    "run": "babel-node ./src/index.js",
+    "runComp": "npm run build & node ./dist/index.js"
   },
   "author": "Vyacheslav Lapin",
   "license": "ISC",
