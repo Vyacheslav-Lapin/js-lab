@@ -2,52 +2,14 @@
 
 // https://www.youtube.com/embed/53pcd8gF2yk?start=60&end=90
 // https://youtu.be/53pcd8gF2yk?t=1m
+// javascript:p=prompt,t=c=>{let d=x=>x?parseInt(x):0,[,h,m,s]=/(\d+h)?(\d+m)?(\d+s)?/i.exec(c);return(d(h)*60+d(m))*60+d(s)},[,h,s]=/https?:\/\/youtu\.be\/([^?]+)\?t?=?(.+)/i.exec(p("Введите ссылку на видео")),e=p(`Время окончания фрагмента (должно быть больше, чем ${s})\n, можно оставить пустым`);void p("Вот она ваша ссылка:", `https://www.youtube.com/embed/${h}?start=${t(s)}&end=${t(e)}&autoplay=1`)
 
-let s = "https://www.youtube.com/embed/";
-const sourceLink = prompt("Введите ссылку на видео",
-    "https://youtu.be/53pcd8gF2yk?t=1m");
+const t = c => {
+        const d = x => x ? parseInt(x) : 0;
+        const [, h, m, s] = /(\d+h)?(\d+m)?(\d+s)?/i.exec(c);
+        return (d(h) * 60 + d(m)) * 60 + d(s)
+    };
+const [, h, s] = /https?:\/\/youtu\.be\/([^?]+)\?t?=?(.+)/i.exec(prompt("Введите ссылку на видео"));
+const e = prompt(`Время окончания фрагмента (должно быть больше, чем ${s})\n, можно оставить пустым`);
 
-const arr = /https?:\/\/youtu\.be\/([^?]+)\?t?=?(.+)/
-    .exec(sourceLink);
-
-const hash = arr[1];
-const start = arr[2];
-
-console.log(arr[0]);
-console.log(hash);
-console.log(start);
-
-s += hash;
-
-const regExp = /(\d+h)?(\d+m)?(\d+s)?/;
-const timeArr = regExp.exec(start);
-const startHours = timeArr[1] === undefined ? 0 : parseInt(timeArr[1]);
-const startMinutes = timeArr[2] === undefined ? 0 : parseInt(timeArr[2]);
-const startSeconds = timeArr[3] === undefined ? 0 : parseInt(timeArr[3]);
-
-s += "?start=" + (startSeconds +
-    (startMinutes +
-        (startHours * 60)) * 60);
-
-console.log(startHours);
-console.log(startMinutes);
-console.log(startSeconds);
-
-const end = prompt(`Время окончания фрагмента (должно быть больше, чем ${start})\n, можно оставить пустым`);
-const endTimeArr = regExp.exec(end);
-const endHours = endTimeArr[1] === undefined ? 0 : parseInt(endTimeArr[1]);
-const endMinutes = endTimeArr[2] === undefined ? 0 : parseInt(endTimeArr[2]);
-const endSeconds = endTimeArr[3] === undefined ? 0 : parseInt(endTimeArr[3]);
-
-console.log(endHours);
-console.log(endMinutes);
-console.log(endSeconds);
-
-s += "&end=" + (endSeconds +
-    (endMinutes +
-        (endHours * 60)) * 60);
-
-if (confirm("Хочешь autoplay?"))
-    s += "&autoplay=1";
-
-prompt("Вот она ваша ссылка:", s);
+void prompt("Вот она ваша ссылка:", `https://www.youtube.com/embed/${h}?start=${t(s)}&end=${t(e)}&autoplay=1`)
