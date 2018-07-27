@@ -4,17 +4,39 @@
   "description": "",
   "main": "./src/index.js",
   "scripts": {
+    "test": "jest",
     "build": "NODE_ENV=production babel ./src --out-dir ./dist --source-maps inline",
     "babel-node": "babel-node",
     "run": "babel-node ./src/index.js",
     "runComp": "npm run build & node ./dist/index.js"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "author": "Vyacheslav Lapin",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-jest": "^23.4.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "debug": "^3.1.0",
+    "eslint": "^5.2.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jest": "^21.18.0",
+    "flow-bin": "^0.77",
+    "flow-typed": "^2.5.1",
+    "jest": "^23",
+    "jest-cli": "^23.4.1"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1"
   }
 }
